@@ -1,7 +1,3 @@
-$(document).ready(function () {
-    $('#table').DataTable({
-      "scrollY": "50vh",
-      "scrollCollapse": true,
-    });
-    $('.dataTables_length').addClass('bs-select');
-  });
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
