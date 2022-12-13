@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height:10%;
+    background-color: #2A2A2A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.menu1 {
+    display: flex;
+    list-style: none;
+    color: #FCFBF9;
+    text-decoration: none;
+}
+
+.menu1 li {
+    margin-left: 120px;
+}
+
+.menu1 li a{
+    color: #FCFBF9;
+    text-decoration: none;
+}
+.menu1 li a:hover {
+    color-scheme: #6C63FF;
+    color:#6C63FF;
+}
+
+.menu2 {
+    display: flex;
+    list-style: none;
+}
+
+.menu2 li {
+    margin-left: 8px;
+}
+
+body {
+    background-color: #FCFBF9;
+    color: #000000;
+    font-size: 23px;
+    font-family: avenir, sans-serif;
+}
+
+.main_wrap {
+    position: relative;
+    padding: 100px 0 0 0;
+    width: 100%;
+    margin-bottom: 400px;
+}
+
+.div-search{
+    display: flex;
+    justify-content: center;
+}
+
+
+.div-search:after {content:""; clear:both; display:table}
+.div-search form {
+    width: 30%;
+    height: 1%;
+    float: left;
+    padding-top: 33px;
+}
+.div-search input {
+    width: 100%;
+    height: 55px;
+    padding-left: 15px;
+    border-radius: 17px;
+    border: 2px solid #2a2a2a;
+    background: #ffffff;
+    outline: none;
+    position: relative;
+    transition: .3s linear;
+}
+.div-search input:focus {
+    width: 100%;
+}
+.div-search button {
+    padding: 5px 0px 10px 10px;
+    background: none;
+    border: none;
+    position: absolute;
+}
+
+footer {
+    align-items: center;
+    background-color: #2A2A2A;
+    bottom: 0;
+    color: #666666;
+    display: flex;
+    font-size: 14px;
+    height: 6%;
+    justify-content: center;
+    position: fixed;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 1;
+  }
+
+@font-face {
+    font-family: Avenir;
+    src: url(../fonts/Avenir-Light.woff2);
+    font-weight: 900;
+}
