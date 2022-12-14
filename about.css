@@ -5,6 +5,10 @@
     text-decoration: none;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 .header {
     height:10%;
     background-color: #2A2A2A;
@@ -121,6 +125,30 @@ body {
     padding: 100px 0 0 0;
     width: 100%;
     margin-bottom: 400px;
+}
+
+.bd-content {
+    grid-area: content;
+    min-width: 1px;
+    width: 80%;
+    vertical-align:middle;
+}
+
+.bd-layout {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 1fr 3fr;
+}
+
+
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
 }
 
 footer {

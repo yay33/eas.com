@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    padding-bottom: 0 ;
     box-sizing: border-box;
 }
 
@@ -90,6 +91,7 @@
     display: flex;
     color: #FCFBF9;
     text-decoration: none;
+    
 }
 
 .menu1 li {
@@ -189,33 +191,11 @@ body {
 }
  
 .table tr:hover td {
-	background: #bfbde7;
-}
-.table tr:hover td:after {
-	content: '';
-	position: absolute;
-	top: 0px;
-	right: 0px;    
-	bottom: 0px;    
-	left: 0px;
-	width: 105%;
-	border-top: 3px solid #6C63FF;
-	border-bottom: 3px solid #6C63FF;
-}
- 
-/* Рамка слева у первой ячейки */
-.table tr:hover td:first-child:after {
-	border-left: 3px solid #6C63FF;
-}
- 
-/* Рамка справа у последний ячейки */
-.table tr:hover td:last-child:after {
-	border-right: 3px solid #6C63FF;
-	width: auto;
+	background: #bdbce2;
 }
 
 .func{
-    display: flex;
+    display: flexbox;
     justify-content: center;
     width: 100%;
     height: 55px;
@@ -223,8 +203,28 @@ body {
     box-sizing: content-box;
     position: relative;
     flex-wrap: wrap;
-    
-    
+}
+
+.ass{
+    float:left;
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-left: 15px;
+}
+
+.clockpage
+{
+    margin: auto;
+    max-width: 500px;
+    min-width: 100px;
+    background: #FCFBF9;
+    text-align: center;
+}
+#dayOfWeek
+{
+  display: block;
+  font-weight: normal;
+  font-size: 20px;
 }
 
 .div-search{
@@ -232,6 +232,7 @@ body {
     width: 300px;
     height: 55px;
     margin-right: 300px;
+    margin-left: 285px;
     vertical-align: middle;
 }
 
