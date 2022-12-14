@@ -214,21 +214,8 @@ body {
 	width: auto;
 }
 
-/*table.dataTable thead .sorting:after,
-table.dataTable thead .sorting:before,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_desc:before,
-table.dataTable thead .sorting_desc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:before {
-bottom: .5em;
-}*/
-
 .func{
-    display: block;
+    display: flex;
     justify-content: center;
     width: 100%;
     height: 55px;
@@ -236,20 +223,21 @@ bottom: .5em;
     box-sizing: content-box;
     position: relative;
     flex-wrap: wrap;
+    
+    
 }
 
 .div-search{
     display: inline-block;
     width: 300px;
     height: 55px;
-    margin: 0px 0px 0px 390px;
+    margin-right: 300px;
     vertical-align: middle;
 }
 
 .managment_all {
-    padding: 0px 0px 0px 63px;
     display: inline-block;
-    margin-left: 21px;
+    margin-left: 300px;
     vertical-align: middle;
 }
 
@@ -285,6 +273,54 @@ bottom: .5em;
     display:inline-flex;
     box-sizing: border-box;
 }
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #6C63FF;
+    --bs-btn-border-color: #6C63FF;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #5b52f8;
+    --bs-btn-hover-border-color: #5b52f8;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #5b52f8;
+    --bs-btn-active-border-color: #6C63FF;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #6C63FF;
+    --bs-btn-disabled-border-color: #6C63FF;
+}
+
+.guruweba_example_form {
+    width: 470px;
+    font-size: 20px;
+  }
+  .guruweba_example_caption {
+    font-size: 20px;
+    text-align: center;
+  }
+  .guruweba_example_form .guruweba_example_infofield {
+    margin-top: 10px;
+  }
+  .guruweba_example_form select, .guruweba_example_form input, .guruweba_example_form textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+  }
+
+  /*.guruweba_example_form{
+    --border-color: #6C63FF;
+    --hover-color: #fff;
+    --hover-bg: #5b52f8;
+    --hover-border-color: #5b52f8;
+    --focus-shadow-rgb: 49,132,253;
+    --active-color: #fff;
+    --active-bg: #5b52f8;
+    --active-border-color: #6C63FF;
+    --active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+  }*/
 
 footer {
     align-items: center;

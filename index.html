@@ -29,7 +29,7 @@
             </nav>
             <nav>
                 <ul class="menu2">
-                    <li><a href="#"> 
+                    <li><a type="button" data-bs-toggle="modal" data-bs-target="#settings"> 
                         <img src="img/settings.svg" class="settings">
                     </a></li>
                     <li> 
@@ -47,9 +47,7 @@
                                 <div class="text_profile"> max max max</div>
                             </button>
                             <div class="dropdown-content">
-                              <a href="#">Link 1</a>
-                              <a href="#">Link 2</a>
-                              <a href="#">Link 3</a>
+                              <a href="#">Выход</a>
                             </div>
                           </div>
                     </li>
@@ -72,17 +70,16 @@
             
         <div class="managment_all">
             <ul class="managment">
-                <li><a href="#openModal">
+                <li><a type="button" data-bs-toggle="modal" data-bs-target="#addModal">
                     <img src="img/add.svg"> 
                 </a></li>
-                
-                <li><a href="#"> 
+                <li><a type="button" data-bs-toggle="modal" data-bs-target="#changeModal"> 
                     <img src="img/edit.svg">
                 </a></li>
                 <li><a href="#"> 
                     <img src="img/history.svg">
                 </a></li>
-                <li><a href="#"> 
+                <li><a type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"> 
                     <img src="img/delete.svg">
                 </a></li>
                 <li><a href="#">
@@ -91,24 +88,109 @@
             </ul>
         </div>
     </div>
-    
-    <div class="modal fade" id="#openModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+    <!--modals-->
+    <div>
+        <!--add-->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Добавление актива</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="guruweba_example_form" name="feedback" method="POST" action="">
+                            <div>Название</div>
+                            <input type="text" name="name" required="required">
+                            <div>Ценность</div>
+                            <input type="number" name="price" required="required">
+                            <div>Примечание</div>
+                            <textarea name="message"></textarea>
+                            <div class="guruweba_example_infofield">Категория</div>
+                            <select name="theme" required="required">
+                              <option value="">Выберите вариант</option>
+                              <option>Автомобиль</option>
+                              <option>Денежные средства</option>
+                              <option>Сотрудничество</option>
+                            </select>
+                          </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-              <button type="button" class="btn btn-primary">Сохранить изменения</button>
-            </div>
-          </div>
         </div>
-      </div>
+        <!--edit-->
+        <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Изменение актива</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="guruweba_example_form" name="feedback" method="POST" action="">
+                            <div>Название</div>
+                            <input type="text" name="name" required="required">
+                            <div>Ценность</div>
+                            <input type="number" name="price" required="required">
+                            <div>Примечание</div>
+                            <textarea name="message"></textarea>
+                            <div class="guruweba_example_infofield">Категория</div>
+                            <select name="theme" required="required">
+                              <option value="">Выберите вариант</option>
+                              <option>Автомобиль</option>
+                              <option>Денежные средства</option>
+                              <option>Сотрудничество</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--delete-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Удаление актива</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Вы точно хотите удалить "название"
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--settings-->
+        <div class="modal fade" id="settings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Настройки</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class = "main_wrap">
         <div class="scroll-table">
@@ -125,7 +207,7 @@
                 </thead>
             </table>	
             <div class="scroll-table-body">
-                <table class="table"  cellspacing="0" width="100%">
+                <table class="table" cellspacing="0" width="100%">
                     <tbody>
                         <tr>
                             <td></td>
@@ -451,108 +533,6 @@
                 </table>
             </div>	
         </div>
-    <!--<table id="table" class="table" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-            <th class="th-sm">Name
-            </th>
-            <th class="th-sm">Position
-            </th>
-            <th class="th-sm">Office
-            </th>
-            <th class="th-sm">Age
-            </th>
-            <th class="th-sm">Start date
-            </th>
-            <th class="th-sm">Salary
-            </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-            </tr>
-            <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011/07/25</td>
-            <td>$170,750</td>
-            </tr>
-            <tr>
-            <td>Ashton Cox</td>
-            <td>Junior Technical Author</td>
-            <td>San Francisco</td>
-            <td>66</td>
-            <td>2009/01/12</td>
-            <td>$86,000</td>
-            </tr>
-            <tr>
-            <td>Cedric Kelly</td>
-            <td>Senior Javascript Developer</td>
-            <td>Edinburgh</td>
-            <td>22</td>
-            <td>2012/03/29</td>
-            <td>$433,060</td>
-            </tr>
-            <tr>
-            <td>Airi Satou</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>33</td>
-            <td>2008/11/28</td>
-            <td>$162,700</td>
-            </tr>
-            <tr>
-            <td>Brielle Williamson</td>
-            <td>Integration Specialist</td>
-            <td>New York</td>
-            <td>61</td>
-            <td>2012/12/02</td>
-            <td>$372,000</td>
-            </tr>
-            <tr>
-            <td>Herrod Chandler</td>
-            <td>Sales Assistant</td>
-            <td>San Francisco</td>
-            <td>59</td>
-            <td>2012/08/06</td>
-            <td>$137,500</td>
-            </tr>
-            <tr>
-            <td>Rhona Davidson</td>
-            <td>Integration Specialist</td>
-            <td>Tokyo</td>
-            <td>55</td>
-            <td>2010/10/14</td>
-            <td>$327,900</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-              <th>Name
-              </th>
-              <th>Position
-              </th>
-              <th>Office
-              </th>
-              <th>Age
-              </th>
-              <th>Start date
-              </th>
-              <th>Salary
-              </th>
-            </tr>
-          </tfoot>
-        </table>
-        </table>-->
-    <!--<table class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
@@ -589,8 +569,7 @@
             vsem privet
         </h5>
     </footer>
-    <script>
-    
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
