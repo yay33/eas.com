@@ -1,5 +1,6 @@
 ﻿<?php
 require('databaseconnect.php');
+$a = $_COOKIE['login'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +35,7 @@ require('databaseconnect.php');
             </nav>
             <nav>
                 <ul class="menu2">
+                <?php if ($a!=null):?>
                     <li><a type="button" data-bs-toggle="modal" data-bs-target="#settings"> 
                         <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
                         <lord-icon
@@ -55,18 +57,32 @@ require('databaseconnect.php');
                                 </lord-icon>
                             </button>
                             <div class="dropdown-content1">
-                              <a href="#">У вас рак</a>
+                              <a href="#">мяу</a>
                             </div>
                           </div>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <div class="dropdown">
                             <button class="dropbtn"> 
                                 <img src="img/profile.svg"> 
-                                <div class="text_profile"> max max max</div>
+                                <div class="text_profile"><?php echo($a)?></div>
                             </button>
                             <div class="dropdown-content">
-                              <a href="#">Выход</a>
+                                
+                                
+                                <?php 
+                                if ($a==null):?>
+                                    <a href="reg.php">Вход</a>
+                                <?php endif; ?>
+                                <?php if ($a!=null):?>
+                                    <a href="#">Выход
+                                        <?php
+                                            $_COOKIE['login']=null;
+                                        ?>
+                                    </a>
+
+                                <?php endif; ?>
                             </div>
                           </div>
                     </li>
@@ -102,6 +118,7 @@ require('databaseconnect.php');
         </div>  
             
         <div class="managment_all">
+            <?php if ($a!=null):?>
             <ul class="managment">
                 <li><a type="button" data-bs-toggle="modal" data-bs-target="#addModal">
                     <img src="img/add.svg"> 
@@ -125,6 +142,7 @@ require('databaseconnect.php');
                     <img src="img/small_settings.svg">
                 </a></li>
             </ul>
+            <?php endif; ?>
         </div>
     </div>
     <!--modals-->
@@ -161,7 +179,7 @@ require('databaseconnect.php');
                 </div>
             </div>
         </div>
-    </div>
+    
         <!--edit-->
         <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -284,7 +302,7 @@ require('databaseconnect.php');
                         <th><?php echo sort_link_th('Дата', 'date_of_asc', 'date_of_desc'); ?></th>
                         <th><?php echo sort_link_th('Автор', 'author_asc', 'author_desc'); ?></th>
                         <th><?php echo sort_link_th('Примечание', 'something_new_asc', 'something_new_desc'); ?></th>
-                        <th></th>
+                        <?php if ($a!=null):?><th></th><?php endif; ?>
                     </tr>
                 </thead>
             </table>	
@@ -302,16 +320,22 @@ require('databaseconnect.php');
                             <td><?php echo $row['date_of'];?></td>
                             <td><?php echo $row['author'];?></td>
                             <td><?php echo $row['something_new'];?></td>
+                            
+                            <?php if ($a!=null):?>
                             <td>
-							<form method = 'POST'>
+                            <form method = 'get'>
 								<input type='hidden' name='id1'  value = '<?php echo $row['id'] ?>'>
 								<button name='changeModal' data-bs-toggle="modal" data-bs-target="#changeModal">✎</button>
-							</form>
+							</form>    
 							<form action = delete_info.php method = 'POST'>
 								<input type='hidden' name='id2' value = '<?php echo $row['id'] ?>'>
-								<button name='delete_table'>Х</button>
+								<button name='delete_table'>
+                                Х
+                                </button>
 							</form>
-						    </td>
+                            </td>
+                            <?php endif; ?>
+						    
                         </tr>
                         <?php endforeach; ?>  
                     </tbody>

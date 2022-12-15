@@ -1,5 +1,6 @@
 <?php
 require('databaseconnect.php');
+$a = $_COOKIE['login'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +10,11 @@ require('databaseconnect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAS</title>
-    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload="clockTimer();">
     <section class="header_wrap">
         <header class="header">
             <a href="index.php">
@@ -32,6 +35,7 @@ require('databaseconnect.php');
             </nav>
             <nav>
                 <ul class="menu2">
+                <?php if ($a!=null):?>
                     <li><a type="button" data-bs-toggle="modal" data-bs-target="#settings"> 
                         <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
                         <lord-icon
@@ -53,18 +57,32 @@ require('databaseconnect.php');
                                 </lord-icon>
                             </button>
                             <div class="dropdown-content1">
-                              <a href="#">У вас рак</a>
+                              <a href="#">мяу</a>
                             </div>
                           </div>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <div class="dropdown">
                             <button class="dropbtn"> 
                                 <img src="img/profile.svg"> 
-                                <div class="text_profile"> max max max</div>
+                                <div class="text_profile"><?php echo($a)?></div>
                             </button>
                             <div class="dropdown-content">
-                              <a href="#">Выход</a>
+                                
+                                
+                                <?php 
+                                if ($a==null):?>
+                                    <a href="reg.php">Вход</a>
+                                <?php endif; ?>
+                                <?php if ($a!=null):?>
+                                    <a href="#">Выход
+                                        <?php
+                                            $_COOKIE['login']=null;
+                                        ?>
+                                    </a>
+
+                                <?php endif; ?>
                             </div>
                           </div>
                     </li>
@@ -72,17 +90,6 @@ require('databaseconnect.php');
             </nav>
         </header>
     <section>
-
-    <div class="div-search">
-        <form method="get">
-            <div class="search">
-                <input class="input-search" name="search" placeholder="search" type="search">
-                <button class="button-search" name="getinfo" id="submit" type="submit">
-                    <img src="img/Group 63.svg">
-                </button>
-            </div>
-        </form>
-    </div>  
 
     <section class = "main_wrap">
        
