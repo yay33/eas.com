@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require('databaseconnect.php');
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,18 +16,18 @@
 <body onload="clockTimer();">
     <section class="header_wrap">
         <header class="header">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="img/logo.svg" class="logo">              
             </a>
             <nav>
                 <ul class="menu1">
-                   <li><a href="index.html">
+                   <li><a href="index.php">
                         Учёт активов
                    </a></li>
-                    <li><a href="news.html">
+                    <li><a href="news.php">
                         Новости
                     </a></li>
-                    <li><a href="about.html">
+                    <li><a href="about.php">
                         О нас
                     </a></li> 
                 </ul>
@@ -72,7 +76,6 @@
     <section>
 
     <div class="func">
-
         <aside class="ass">
             <div>
                 <div class="clockpage">
@@ -106,9 +109,10 @@
                 <li><a type="button" data-bs-toggle="modal" data-bs-target="#changeModal"> 
                     <img src="img/edit.svg">
                 </a></li>
-                <li><a href="#"> 
+                <li><a onClick="window.location.reload();">
                     <img src="img/history.svg">
-                </a></li>
+                </a>
+                </li>
                 <li><a type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"> 
                     <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
                     <lord-icon
@@ -133,30 +137,31 @@
                         <h5 class="modal-title" id="exampleModalLabel">Добавление актива</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <form class="guruweba_example_form" name="feedback" method="post" action="add_info.php">
                     <div class="modal-body">
-                        <form class="guruweba_example_form" name="feedback" method="POST" action="">
                             <div>Название</div>
-                            <input type="text" name="name" required="required">
+                            <input type="text" name="name">
                             <div>Ценность</div>
-                            <input type="number" name="price" required="required">
+                            <input type="number" name="price">
                             <div>Примечание</div>
-                            <textarea name="message"></textarea>
+                            <textarea name="something_new"></textarea>
                             <div class="guruweba_example_infofield">Категория</div>
-                            <select name="theme" required="required">
+                            <select name="theme">
                               <option value="">Выберите вариант</option>
                               <option>Автомобиль</option>
                               <option>Денежные средства</option>
                               <option>Сотрудничество</option>
                             </select>
-                          </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="button" class="btn btn-primary">Сохранить</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button name="button" type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
         <!--edit-->
         <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -165,7 +170,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Изменение актива</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                        <div class="modal-body">
                         <form class="guruweba_example_form" name="feedback" method="POST" action="">
                             <div>Название</div>
                             <input type="text" name="name" required="required">
@@ -175,17 +180,17 @@
                             <textarea name="message"></textarea>
                             <div class="guruweba_example_infofield">Категория</div>
                             <select name="theme" required="required">
-                              <option value="">Выберите вариант</option>
-                              <option>Автомобиль</option>
-                              <option>Денежные средства</option>
-                              <option>Сотрудничество</option>
+                            <option value="">Выберите вариант</option>
+                            <option>Автомобиль</option>
+                            <option>Денежные средства</option>
+                            <option>Сотрудничество</option>
                             </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Сохранить</button>
+                        </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="button" class="btn btn-primary">Сохранить</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -228,226 +233,76 @@
     </div>
 
     <section class = "main_wrap">
-        
-        
+        <?php
+        $sort_list = array(
+            'id_asc'  => '`id`',
+            'id_desc' => '`id` DESC',
+            'name_asc'   => '`name`',
+            'name_desc'  => '`name` DESC',
+            'price_asc'  => '`price`',
+            'price_desc' => '`price` DESC',  
+            'date_of_asc'   => '`date_of`',
+            'date_of_desc'  => '`date_of` DESC',
+            'author_asc'   => '`author`',
+            'author_desc'  => '`author` DESC',
+            'something_new_asc'   => '`something_new`',
+            'something_new_desc'  => '`something_new` DESC',
+        );
+
+        $sort = @$_GET['sort'];
+            if (array_key_exists($sort, $sort_list)) {
+                $sort_sql = $sort_list[$sort];
+            } else {
+                $sort_sql = reset($sort_list);
+        }
+
+        function sort_link_th($title, $a, $b) {
+            $sort = @$_GET['sort'];
+         
+            if ($sort == $a) {
+                return '<a class="active" href="?sort=' . $b . '">' . $title . ' <i>▲</i></a>';
+            } elseif ($sort == $b) {
+                return '<a class="active" href="?sort=' . $a . '">' . $title . ' <i>▼</i></a>';  
+            } else {
+                return '<a href="?sort=' . $a . '">' . $title . '</a>';  
+            }
+        }
+
+        $zapros = "SELECT * FROM `aktiv(main)` ORDER BY {$sort_sql}";
+        $list = mysqli_query($db, $zapros)
+        ?>
         <div class="scroll-table">
             <table cellspacing="0" width="100%">
                 <thead class="thead-dark">
                     <tr>
                         <th class="active">
                             <input type="checkbox" class="select-all checkbox" name="select-all" />
-                        </th>
-                        <th>Название блюда</th>
-                        <th>Белки</th>
-                        <th>Жиры</th>
-                        <th>Углеводы</th>
-                        <th>Ккал</th>
+                        </th>          
+                        <th><?php echo sort_link_th('id', 'id_asc', 'id_desc'); ?></th>
+                        <th><?php echo sort_link_th('Название', 'name_asc', 'name_desc'); ?></th>
+                        <th><?php echo sort_link_th('Ценность', 'price_asc', 'name_desc'); ?></th>
+                        <th><?php echo sort_link_th('Дата', 'date_of_asc', 'date_of_desc'); ?></th>
+                        <th><?php echo sort_link_th('Автор', 'author_asc', 'author_desc'); ?></th>
+                        <th><?php echo sort_link_th('Примечание', 'something_new_asc', 'something_new_desc'); ?></th>
                     </tr>
                 </thead>
             </table>	
             <div class="scroll-table-body">
                 <table class="table" cellspacing="0" width="100%">
                     <tbody>
+                        <?php foreach ($list as $row): ?>
                         <tr>
                             <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
+                                <input type="checkbox" class="select-item checkbox" name="select-item[]" value="selected1[]"/>
                             </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
+                            <td><?php echo $row['id'];?></td>
+                            <td><?php echo $row['name'];?></td>
+                            <td><?php echo $row['price'];?></td>
+                            <td><?php echo $row['date_of'];?></td>
+                            <td><?php echo $row['author'];?></td>
+                            <td><?php echo $row['something_new'];?></td>
                         </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1001" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1002" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1003" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1004" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1001" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1002" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1003" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1004" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1001" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1002" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1003" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1004" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1001" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1002" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1003" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
-                        <tr>
-                            <td class="active">
-                                <input type="checkbox" class="select-item checkbox" name="select-item" value="1004" />
-                            </td>
-                            <td>Азу</td>
-                            <td>11,9</td>
-                            <td>14,2</td>
-                            <td>10,2</td>
-                            <td>214</td>
-                        </tr>
+                        <?php endforeach; ?>  
                     </tbody>
                 </table>
             </div>

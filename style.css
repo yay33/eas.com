@@ -160,6 +160,9 @@ body {
 	font-size: 14px;
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
+    color: #777777;
+    font-style: normal;
+    text-decoration: none;
 }
 .scroll-table tbody td {
 	text-align: left;
@@ -170,7 +173,12 @@ body {
 	vertical-align: top;
 }
 
- 
+.table-active{
+    vertical-align: middle;
+    float: none;
+    padding-left: 15px;
+}
+
 /* Стили для скролла */
 ::-webkit-scrollbar {
 	width: 6px;

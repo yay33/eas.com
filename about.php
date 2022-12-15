@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require('databaseconnect.php');
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,18 +14,18 @@
 <body>
     <section class="header_wrap">
         <header class="header">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="img/logo.svg" class="logo">              
             </a>
             <nav>
                 <ul class="menu1">
-                   <li><a href="index.html">
+                   <li><a href="index.php">
                         Учёт активов
                    </a></li>
-                    <li><a href="news.html">
+                    <li><a href="news.php">
                         Новости
                     </a></li>
-                    <li><a href="about.html">
+                    <li><a href="about.php">
                         О нас
                     </a></li> 
                 </ul>
