@@ -170,8 +170,9 @@ require('databaseconnect.php');
                         <h5 class="modal-title" id="exampleModalLabel">Изменение актива</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                        
+                    <form class="guruweba_example_form" action = change_info.php name="feedback" method="POST">
                         <div class="modal-body">
-                        <form class="guruweba_example_form" name="feedback" method="POST" action="">
                             <div>Название</div>
                             <input type="text" name="name" required="required">
                             <div>Ценность</div>
@@ -188,9 +189,9 @@ require('databaseconnect.php');
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                            <button type="button" class="btn btn-primary">Сохранить</button>
+                            <button type="button" type="change" class="btn btn-primary">Сохранить</button>
                         </div>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -253,8 +254,7 @@ require('databaseconnect.php');
             if (array_key_exists($sort, $sort_list)) {
                 $sort_sql = $sort_list[$sort];
             } else {
-                $sort_sql = reset($sort_list);
-        }
+                $sort_sql = reset($sort_list);}
 
         function sort_link_th($title, $a, $b) {
             $sort = @$_GET['sort'];
@@ -284,6 +284,7 @@ require('databaseconnect.php');
                         <th><?php echo sort_link_th('Дата', 'date_of_asc', 'date_of_desc'); ?></th>
                         <th><?php echo sort_link_th('Автор', 'author_asc', 'author_desc'); ?></th>
                         <th><?php echo sort_link_th('Примечание', 'something_new_asc', 'something_new_desc'); ?></th>
+                        <th></th>
                     </tr>
                 </thead>
             </table>	
@@ -301,6 +302,16 @@ require('databaseconnect.php');
                             <td><?php echo $row['date_of'];?></td>
                             <td><?php echo $row['author'];?></td>
                             <td><?php echo $row['something_new'];?></td>
+                            <td>
+							<form method = 'POST'>
+								<input type='hidden' name='id1'  value = '<?php echo $row['id'] ?>'>
+								<button name='changeModal' data-bs-toggle="modal" data-bs-target="#changeModal">✎</button>
+							</form>
+							<form action = delete_info.php method = 'POST'>
+								<input type='hidden' name='id2' value = '<?php echo $row['id'] ?>'>
+								<button name='delete_table'>Х</button>
+							</form>
+						    </td>
                         </tr>
                         <?php endforeach; ?>  
                     </tbody>
