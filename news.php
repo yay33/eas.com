@@ -11,7 +11,7 @@ $a = $_COOKIE['login'] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="news.css">
     <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body onload="clockTimer();">
@@ -76,12 +76,7 @@ $a = $_COOKIE['login'] ?? null;
                                     <a href="reg.php">Вход</a>
                                 <?php endif; ?>
                                 <?php if ($a!=null):?>
-                                    <a href="#">Выход
-                                        <?php
-                                            $_COOKIE['login']=null;
-                                        ?>
-                                    </a>
-
+                                    <a href="logout.php">Выход</a>
                                 <?php endif; ?>
                             </div>
                           </div>
@@ -92,18 +87,51 @@ $a = $_COOKIE['login'] ?? null;
     <section>
 
     <section class = "main_wrap">
-       
-        <p>
-            123
-        </p>   
-        <p>
-            123
-        </p> 
+
+            <section class="main_area">
+                <?
+                $sql = "select * from news order by date desc";
+                $result = mysqli_query($db, $sql);
+                
+                while ($row = mysqli_fetch_array($result)) {
+                    echo '<section class="block">';
+                    echo '<p class="date">' . $row['date'] . '</p>';
+                    echo '<p class="title">' . $row['name'] . '</p>';
+                    echo '<p class="text_news">' . $row['text'] . '</p>';
+                    echo '</section>';}
+                    ?>
+                <!--<div class="columns">
+                    <div class="column main-column">
+                    <a class="article first-article">
+                    
+                    </a>
+                    </div>
+                    <div class="column">
+                    <a class="article first-article">
+                    <figure class="article-image">
+                        <img src="">
+                    </figure>
+                    <div class="article-body">
+                        <h2 class="article-title">
+                        Заголовок 
+                        </h2>
+                        <p class="article-content">
+                        Контент
+                        </p>
+                        <footer class="article-info">
+                        Информация
+                        </footer>
+                    </div>
+                    </a>
+                    </div>
+                    </div>-->
+
+        
     </section>
 
     <footer class="fixed-footer">
         <h5>
-            vsem privet
+            @yay33. Все права защищены.
         </h5>
     </footer>
 </body>
