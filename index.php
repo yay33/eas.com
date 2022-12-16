@@ -76,11 +76,7 @@ $a = $_COOKIE['login'] ?? null;
                                     <a href="reg.php">Вход</a>
                                 <?php endif; ?>
                                 <?php if ($a!=null):?>
-                                    <a href="#">Выход
-                                        <?php
-                                            $_COOKIE['login']=null;
-                                        ?>
-                                    </a>
+                                    <a href="logout.php">Выход</a>
 
                                 <?php endif; ?>
                             </div>
@@ -347,7 +343,7 @@ $a = $_COOKIE['login'] ?? null;
 
     <footer class="fixed-footer">
         <h5>
-            vsem privet
+            @yay33. Все права защищены.
         </h5>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>

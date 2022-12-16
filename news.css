@@ -116,46 +116,17 @@ body {
     font-family: avenir, sans-serif;
 }
 
-.main_wrap {
-    position: relative;
-    padding: 100px 0 0 0;
-    width: 100%;
-    margin-bottom: 400px;
-}
-
-.div-search{
+.main_wrap{
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 
-.div-search:after {content:""; clear:both; display:table}
-.div-search form {
-    width: 30%;
-    height: 1%;
-    float: left;
-    padding-top: 33px;
-}
-.div-search input {
-    width: 100%;
-    height: 55px;
-    padding-left: 15px;
-    border-radius: 17px;
-    border: 2px solid #2a2a2a;
-    background: #ffffff;
-    outline: none;
-    position: relative;
-    transition: .3s linear;
-}
-.div-search input:focus {
-    width: 100%;
-}
-.div-search button {
-    padding: 5px 0px 10px 10px;
-    background: none;
-    border: none;
-    position: absolute;
-}
+
+
+
+
+
 
 footer {
     align-items: center;

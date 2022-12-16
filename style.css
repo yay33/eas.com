@@ -331,6 +331,16 @@ body {
     --active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
   }*/
 
+.main_wrap{
+    align-items: center;
+    display: flex;
+}
+
+.block {
+    align-items: center;
+    display: flex;
+}
+
 footer {
     align-items: center;
     background-color: #2A2A2A;
